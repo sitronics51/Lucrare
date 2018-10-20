@@ -1,0 +1,55 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+<div>
+    <div>
+        <h1>Inregistrare</h1>
+        <form action="" method="post" name="registerform">
+            <p><label>Name:<br>
+                <input name="u_name" size="20" type="text" value=""></label></p>
+            <p><label>E-mail:<br>
+                <input name="u_email" size="30" type="email"></label></p>
+            <p><label>Storage:<br> </label>
+                <form>
+                    <select name="s1">
+                        <option value="db">Database</option>
+                        <option value="file">Fisier</option>
+                    </select>
+            <form name="form1" action="index.php" method="post">
+                <input name="text" type="text" value="">
+                <input type="submit" name="submit" value="Отправить">
+            </form>
+            <?php
+
+if ((isset($_POST['text'])) and (isset($_POST['text'])) and ($_POST['submit'] == "Отправить"))
+{
+    $file = fopen ("form.txt","r+");
+    $str = trim($_POST['text']);
+    if (!$file )
+    {
+        echo("Ошибка открытия файла");
+    }
+    else
+    {
+        fputs ($file, $str);
+    }
+    fclose ($file);
+}
+
+?>
+                </form>
+            <form method='post'>   // типа форма с методом POST
+                <input type='text' name='info'>  // текстовое поле
+                <input type='submit' name='submiter'> // кнопка отправки на сервер
+            </form>
+            <p><input name="register" type="submit" value="Inregistrare"></p>
+            <p><a href="log.php">Sunteti inregistrat</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
